@@ -1,21 +1,21 @@
 import React from 'react';
-import { Button } from '@rmwc/button';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
-import '@rmwc/button/styles';
+import Layout from './components/Layout';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <Button raised label="Press" />
-      </header>
-    </div>
+    <Router>
+      <Layout>
+        <Switch>
+          <Route exact path="/">
+            Home
+          </Route>
+          <Route path="/about">About</Route>
+          <Route path="/dashboard">Dashboard</Route>
+        </Switch>
+      </Layout>
+    </Router>
   );
 }
 
