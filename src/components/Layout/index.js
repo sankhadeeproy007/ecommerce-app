@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Elevation } from '@rmwc/elevation';
 import { SimpleTopAppBar, TopAppBarFixedAdjust } from '@rmwc/top-app-bar';
 import { Drawer, DrawerContent, DrawerAppContent } from '@rmwc/drawer';
@@ -18,10 +19,15 @@ const TOPBAR_ACTIONS = [
   }
 ];
 
-export default function Layout({ children }) {
+export default function Layout({ children, routes }) {
+  const history = useHistory();
   const [showDrawer, setShowDrawer] = useState(false);
   const toggleDrawer = () => {
     setShowDrawer((prev) => !prev);
+  };
+
+  const goToRoute = (path) => () => {
+    history.push(path);
   };
 
   return (
@@ -39,9 +45,13 @@ export default function Layout({ children }) {
       <Drawer className={styles.fixedDrawer} dismissible open={showDrawer}>
         <DrawerContent>
           <List>
-            <ListItem>Cookies</ListItem>
-            <ListItem>Pizza</ListItem>
-            <ListItem>Icecream</ListItem>
+            {routes
+              .filter((route) => route.path !== '/product')
+              .map((route) => (
+                <ListItem onClick={goToRoute(route.path)}>
+                  {route.text}
+                </ListItem>
+              ))}
           </List>
         </DrawerContent>
       </Drawer>

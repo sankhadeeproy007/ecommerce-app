@@ -1,18 +1,19 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Layout from './components/Layout';
+import ROUTES from './routes';
 
 function App() {
   return (
     <Router>
-      <Layout>
+      <Layout routes={ROUTES}>
         <Switch>
-          <Route exact path="/">
-            Home
-          </Route>
-          <Route path="/about">About</Route>
-          <Route path="/dashboard">Dashboard</Route>
+          {ROUTES.map((route) => (
+            <Route exact={route.exact} path={route.path}>
+              {route.content}
+            </Route>
+          ))}
         </Switch>
       </Layout>
     </Router>
