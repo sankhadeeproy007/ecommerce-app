@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  padding: 2rem;
+  justify-content: center;
+}
+
+.productCard {
+  max-width: 740px;
+  display: flex;
+  border-radius: 10px;
+}
+
+.productImage {
+  display: flex;
+  flex: 2;
+}
+
+.content {
+  display: flex;
+  flex: 4;
+  padding: 1rem;
+  flex-direction: column;
+}
