@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  padding: 2rem;
+  justify-content: center;
+}
+
+.formContainer {
+  border-radius: 10px;
+  padding: 1rem;
+  width: 640px;
+}
+
+.formControl {
+  margin-top: 1.2rem;
+}
+
+.row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.2rem;
+}
